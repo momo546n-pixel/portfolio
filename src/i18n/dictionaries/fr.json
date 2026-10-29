@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "skills": "Compétences",
+    "projects": "Projets",
+    "experiences": "Expériences",
+    "education": "Formation",
+    "contact": "Contact"
+  },
+  "sections": {
+    "aboutTitle": "Qui suis-je ?",
+    "skillsTitle": "Ce que je maîtrise",
+    "projectsTitle": "Mes réalisations",
+    "experiencesTitle": "Expériences",
+    "educationTitle": "Formation & certifications",
+    "contactTitle": "Travaillons ensemble"
+  },
+  "actions": {
+    "viewProjects": "Voir mes projets",
+    "contactMe": "Me contacter",
+    "downloadCv": "Télécharger mon CV",
+    "backToProjects": "Retour aux projets",
+    "sourceCode": "Code source",
+    "liveDemo": "Voir la démo",
+    "send": "Envoyer le message"
+  }
+}
