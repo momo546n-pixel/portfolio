@@ -18,13 +18,15 @@ export function ThemeToggle({ className }: { className?: string }) {
       aria-label="Basculer entre le thème clair et sombre"
       onClick={() => setTheme(isDark ? "light" : "dark")}
       className={cn(
-        "inline-flex h-10 w-10 items-center justify-center rounded-md border transition-colors",
-        className ?? "border-border text-foreground hover:bg-muted",
+        "inline-flex h-10 w-10 items-center justify-center rounded-md border transition-all duration-200 hover:-rotate-12 hover:bg-muted active:scale-90",
+        className ?? "border-border text-foreground",
       )}
     >
       {/* Avant le montage, on évite un décalage d'hydratation */}
       {mounted ? (
-        isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />
+        <span key={isDark ? "sun" : "moon"} className="inline-flex">
+          {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+        </span>
       ) : (
         <span className="h-5 w-5" />
       )}

@@ -69,12 +69,12 @@ export function Header({
         <Link
           href="/"
           className={cn(
-            "flex items-center gap-2 font-semibold transition-colors",
+            "group flex items-center gap-2 font-semibold transition-colors",
             light ? "text-white" : "text-foreground",
           )}
           onClick={() => setOpen(false)}
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-tr from-violet-600 to-fuchsia-500 text-sm font-bold text-white">
+          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-tr from-violet-600 to-fuchsia-500 text-sm font-bold text-white transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110">
             {initials}
           </span>
           <span className="hidden whitespace-nowrap lg:inline">{name}</span>
@@ -88,7 +88,7 @@ export function Header({
                 key={item.id}
                 href={item.href}
                 className={cn(
-                  "rounded-md px-3 py-2 text-sm transition-colors",
+                  "rounded-md px-3 py-2 text-sm transition-all duration-200 hover:-translate-y-0.5 active:scale-95",
                   light
                     ? active
                       ? "font-semibold text-white"

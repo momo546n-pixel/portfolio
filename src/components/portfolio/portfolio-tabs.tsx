@@ -33,10 +33,12 @@ function Item({
   index,
   children,
   className,
+  style,
 }: {
   index: number;
   children: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
 }) {
   return (
     <motion.div
@@ -44,6 +46,7 @@ function Item({
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.12 + index * 0.05, duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
       className={className}
+      style={style}
     >
       {children}
     </motion.div>
@@ -84,7 +87,7 @@ export function PortfolioTabs({
             type="button"
             onClick={prev}
             aria-label="Entité précédente"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-all duration-200 hover:scale-110 hover:bg-muted hover:text-foreground active:scale-90"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
@@ -118,7 +121,7 @@ export function PortfolioTabs({
             type="button"
             onClick={next}
             aria-label="Entité suivante"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-all duration-200 hover:scale-110 hover:bg-muted hover:text-foreground active:scale-90"
           >
             <ChevronRight className="h-5 w-5" />
           </button>
@@ -153,13 +156,17 @@ export function PortfolioTabs({
                             <Item
                               key={s.id}
                               index={i}
-                              className="group flex items-center gap-3 rounded-xl border border-border bg-card p-3 transition-colors hover:border-accent/50"
+                              className="group tech-tile flex items-center gap-3 rounded-xl border border-border bg-card p-3"
+                              style={{ "--tech-color": color } as React.CSSProperties}
                             >
                               <span
-                                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg"
-                                style={{ backgroundColor: `${color}1a` }}
+                                className="tech-float flex h-10 w-10 shrink-0 items-center justify-center rounded-lg"
+                                style={{
+                                  backgroundColor: `${color}1a`,
+                                  animationDelay: `${(i * 0.18) % 1.6}s`,
+                                }}
                               >
-                                <TechIcon name={s.name} className="h-5 w-5" />
+                                <TechIcon name={s.name} className="tech-logo h-5 w-5" />
                               </span>
                               <span className="text-sm font-medium leading-tight">
                                 {s.name}

@@ -191,6 +191,58 @@ body {
   background-size: 46px 46px;
 }
 
+/* ===== Logs / icônes de stacks techniques ===== */
+
+/* Flottement discret en continu (sur la vignette, pas l'icône, pour ne pas
+   écraser la transformation au survol) */
+@keyframes logo-idle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+.tech-float {
+  animation: logo-idle 3.4s ease-in-out infinite;
+}
+
+/* Tuile : lueur dans la couleur de la techno au survol */
+.tech-tile {
+  --tech-color: #a78bfa;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.tech-tile:hover {
+  border-color: color-mix(in srgb, var(--tech-color) 55%, transparent);
+  box-shadow: 0 6px 20px -6px color-mix(in srgb, var(--tech-color) 45%, transparent);
+  transform: translateY(-3px);
+}
+.tech-tile:hover .tech-logo {
+  transform: scale(1.25) rotate(-8deg);
+}
+.tech-logo {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* ===== Interactions sur les boutons / liens cliquables ===== */
+
+/* Pression : léger enfoncement */
+.press {
+  transition: transform 0.15s ease;
+}
+.press:active {
+  transform: scale(0.96);
+}
+
+/* Icone interne : petit rebond au survol */
+.bounce-hover {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.group:hover .bounce-hover,
+.bounce-hover:hover {
+  transform: translateY(-3px);
+}
+
 /* Halos colorés qui dérivent lentement */
 @keyframes blob {
   0%, 100% { transform: translate(0, 0) scale(1); }
@@ -204,7 +256,8 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .animate-floaty,
   .animate-bob,
-  .animate-blob {
+  .animate-blob,
+  .tech-float {
     animation: none;
   }
 }

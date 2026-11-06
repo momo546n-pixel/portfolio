@@ -24,7 +24,7 @@ export function Footer({
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="text-muted-foreground transition-colors hover:text-foreground"
+              className="text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:text-foreground active:scale-90"
             >
               <GithubIcon className="h-5 w-5" />
             </a>
@@ -33,7 +33,7 @@ export function Footer({
             <a
               href={`mailto:${email}`}
               aria-label="E-mail"
-              className="text-muted-foreground transition-colors hover:text-foreground"
+              className="text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:text-foreground active:scale-90"
             >
               <Mail className="h-5 w-5" />
             </a>
