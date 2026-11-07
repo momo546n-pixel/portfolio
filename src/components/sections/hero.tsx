@@ -12,7 +12,9 @@ import {
   Sparkles,
   ChevronDown,
 } from "lucide-react";
+import { LinkedinIcon } from "@/components/icons/linkedin";
 import type { Profile, Skill } from "@/lib/types";
+import { LINKEDIN_URL } from "@/lib/site";
 
 export function Hero({
   profile,
@@ -100,13 +102,13 @@ export function Hero({
           <Reveal delay={0.3}>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start">
               <Link
-                href="/portfolio"
+                href="/#portfolio"
                 className="group inline-flex h-12 items-center justify-center gap-2 rounded-md bg-gradient-to-r from-violet-600 to-fuchsia-600 px-7 text-sm font-semibold text-white shadow-lg shadow-fuchsia-600/25 transition-all duration-200 hover:-translate-y-0.5 hover:opacity-95 hover:shadow-lg hover:shadow-fuchsia-600/40 active:scale-[0.96]"
               >
                 Voir mon portfolio <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
               <Link
-                href="/contact"
+                href="/#contact"
                 className="inline-flex h-12 items-center justify-center rounded-md border border-white/15 bg-white/5 px-7 text-sm font-medium text-white backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/10 active:scale-[0.96]"
               >
                 Me contacter
@@ -146,6 +148,15 @@ export function Hero({
                   <Mail className="h-5 w-5" />
                 </a>
               )}
+              <a
+                href={LINKEDIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="text-white/60 transition-all duration-200 hover:-translate-y-0.5 hover:text-white active:scale-90"
+              >
+                <LinkedinIcon className="h-5 w-5" />
+              </a>
             </div>
           </Reveal>
         </div>

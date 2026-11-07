@@ -3,6 +3,8 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { ContactForm } from "@/components/contact-form";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { GithubIcon } from "@/components/icons/github";
+import { LinkedinIcon } from "@/components/icons/linkedin";
+import { LINKEDIN_URL } from "@/lib/site";
 import type { Profile } from "@/lib/types";
 
 export function Contact({ profile }: { profile: Profile | null }) {
@@ -47,10 +49,19 @@ export function Contact({ profile }: { profile: Profile | null }) {
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 transition-colors hover:text-foreground"
               >
-                <GithubIcon className="h-5 w-5 text-accent" />
+                <GithubIcon className="h-5 w-5 text-accent shrink-0" />
                 GitHub
               </a>
             )}
+            <a
+              href={LINKEDIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 transition-colors hover:text-foreground"
+            >
+              <LinkedinIcon className="h-5 w-5 text-accent shrink-0" />
+              LinkedIn
+            </a>
           </div>
           <ContactForm />
         </div>

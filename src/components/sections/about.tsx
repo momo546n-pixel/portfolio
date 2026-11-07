@@ -4,6 +4,8 @@ import { Reveal } from "@/components/reveal";
 import { buttonClasses } from "@/components/ui/button";
 import { Download, Mail, Phone, MapPin } from "lucide-react";
 import { GithubIcon } from "@/components/icons/github";
+import { LinkedinIcon } from "@/components/icons/linkedin";
+import { LINKEDIN_URL } from "@/lib/site";
 import type { Profile } from "@/lib/types";
 
 export function About({ profile }: { profile: Profile | null }) {
@@ -72,6 +74,17 @@ export function About({ profile }: { profile: Profile | null }) {
                     </a>
                   </li>
                 )}
+                <li className="flex items-center gap-2">
+                  <LinkedinIcon className="h-4 w-4 shrink-0 text-accent" />
+                  <a
+                    className="truncate hover:text-foreground"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={LINKEDIN_URL}
+                  >
+                    LinkedIn
+                  </a>
+                </li>
               </ul>
               {profile.cv_url && (
                 <a
