@@ -8,6 +8,7 @@ import {
   LayoutDashboard,
   User,
   Wrench,
+  Briefcase,
   FolderKanban,
   Mail,
   LogOut,
@@ -17,6 +18,7 @@ import {
 const LINKS = [
   { href: "/admin", label: "Tableau de bord", icon: LayoutDashboard, exact: true },
   { href: "/admin/profil", label: "Profil", icon: User },
+  { href: "/admin/experiences", label: "Expériences", icon: Briefcase },
   { href: "/admin/competences", label: "Compétences", icon: Wrench },
   { href: "/admin/projets", label: "Projets", icon: FolderKanban },
   { href: "/admin/messages", label: "Messages", icon: Mail },

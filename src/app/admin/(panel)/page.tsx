@@ -1,23 +1,25 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { buttonClasses } from "@/components/ui/button";
-import { FolderKanban, Wrench, Mail, Plus, Pencil } from "lucide-react";
+import { FolderKanban, Wrench, Briefcase, Mail, Plus, Pencil } from "lucide-react";
 
 export default async function DashboardPage() {
   const supabase = await createClient();
-  const [projects, published, skills, messages, unread] = await Promise.all([
-    supabase.from("projects").select("id", { count: "exact", head: true }),
-    supabase
-      .from("projects")
-      .select("id", { count: "exact", head: true })
-      .eq("status", "published"),
-    supabase.from("skills").select("id", { count: "exact", head: true }),
-    supabase.from("messages").select("id", { count: "exact", head: true }),
-    supabase
-      .from("messages")
-      .select("id", { count: "exact", head: true })
-      .eq("read", false),
-  ]);
+  const [projects, published, skills, experiences, messages, unread] =
+    await Promise.all([
+      supabase.from("projects").select("id", { count: "exact", head: true }),
+      supabase
+        .from("projects")
+        .select("id", { count: "exact", head: true })
+        .eq("status", "published"),
+      supabase.from("skills").select("id", { count: "exact", head: true }),
+      supabase.from("experiences").select("id", { count: "exact", head: true }),
+      supabase.from("messages").select("id", { count: "exact", head: true }),
+      supabase
+        .from("messages")
+        .select("id", { count: "exact", head: true })
+        .eq("read", false),
+    ]);
 
   const stats = [
     {
@@ -35,6 +37,13 @@ export default async function DashboardPage() {
       icon: Wrench,
     },
     {
+      label: "Expériences",
+      value: experiences.count ?? 0,
+      sub: "parcours professionnel",
+      href: "/admin/experiences",
+      icon: Briefcase,
+    },
+    {
       label: "Messages",
       value: messages.count ?? 0,
       sub: `${unread.count ?? 0} non lu(s)`,
@@ -50,7 +59,7 @@ export default async function DashboardPage() {
         Gérez le contenu de votre portfolio sans toucher au code.
       </p>
 
-      <div className="mt-8 grid gap-4 sm:grid-cols-3">
+      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((s) => {
           const Icon = s.icon;
           return (
@@ -80,6 +89,9 @@ export default async function DashboardPage() {
           </Link>
           <Link href="/admin/competences" className={buttonClasses("outline", "sm")}>
             <Wrench className="h-4 w-4" /> Gérer les compétences
+          </Link>
+          <Link href="/admin/experiences" className={buttonClasses("outline", "sm")}>
+            <Briefcase className="h-4 w-4" /> Gérer les expériences
           </Link>
           <Link href="/admin/profil" className={buttonClasses("outline", "sm")}>
             <Pencil className="h-4 w-4" /> Modifier le profil
